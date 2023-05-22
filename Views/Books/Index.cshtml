@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Book>
+
+@{
+    ViewData["Title"] = "List of Books";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info d-flex justify-content-between">                           
+                                <h5 class="card-title">
+                                    @item.Title
+                            </h5>
+                            <div>
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                    }
+                            </div>
+                                           
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="">
+                            <div class="row">
+                                <div class="col-md-12 w-100">
+                                   <img src="@item.ImageURL" width="100%" height="300px" alt="@item.Title">
+                                    
+
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card-body">
+                                        <p class="card-text">@item.BookCategory</p>
+                                        <p class="card-text ">
+                                            <b>Status: </b>
+                                            @if (DateTime.Now >= item.YearPublished && DateTime.Now <= item.EndDate)
+                                            {
+                                                <span class="badge bg-success text-white">AVAILABLE</span>
+                                            }
+                                            else if (DateTime.Now > item.EndDate)
+                                            {
+                                                <span class="badge bg-danger text-white">Finished</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-primary text-white">UPCOMING</span>
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
+                                    <i class="bi bi-eye-fill"></i> Show Details
+                                </a>
+                                <a class="btn btn-success text-white @((DateTime.Now > item.EndDate) ? "disabled" : "")"
+                               asp-controller="Orders"
+                               asp-action="AddItemToShoppingCart"
+                               asp-route-id="@item.Id">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@await Html.PartialAsync("_CreateItem", "Books") 
