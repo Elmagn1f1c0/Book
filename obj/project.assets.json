@@ -2621,11 +2621,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hp\\Downloads\\Assignments\\Books\\Books.csproj",
+      "projectUniqueName": "C:\\Users\\hp\\source\\repos\\Books\\Books.csproj",
       "projectName": "Books",
-      "projectPath": "C:\\Users\\hp\\Downloads\\Assignments\\Books\\Books.csproj",
+      "projectPath": "C:\\Users\\hp\\source\\repos\\Books\\Books.csproj",
       "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hp\\Downloads\\Assignments\\Books\\obj\\",
+      "outputPath": "C:\\Users\\hp\\source\\repos\\Books\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

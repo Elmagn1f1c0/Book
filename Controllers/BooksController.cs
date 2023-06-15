@@ -1,6 +1,7 @@
 ﻿using Books.Data.Services;
 using Books.Data.Static;
 using Books.Data.ViewModels;
+using Books.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,6 +14,7 @@ namespace Books.Controllers
     public class BooksController : Controller
     {
         private readonly IBooksService _service;
+        public int PageSize = 4;
 
 
         public BooksController(IBooksService service)
@@ -27,6 +29,8 @@ namespace Books.Controllers
             var allBooks = await _service.GetAllAsync(n => n.Store);
             return View(allBooks);
         }
+
+
 
         [Authorize]
         //[AllowAnonymous]
@@ -158,7 +162,7 @@ namespace Books.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize/*(Roles = "Admin")*/]
         public async Task<IActionResult> Delete(int id)
         {
             var book = await _service.GetByIdAsync(id);
@@ -170,7 +174,7 @@ namespace Books.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try
@@ -193,7 +197,7 @@ namespace Books.Controllers
                     }
                     else
                     {
-                        Console.WriteLine("An error occurred while executing the DELETE statement: " + sqlException.Message);
+                        Console.WriteLine("An error occurred while executing the DELETE statement: "/* + sqlException.Message*/);
                     }
                 }
                 else
