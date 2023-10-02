@@ -23,7 +23,6 @@ namespace Books.Controllers
         }
 
         [Authorize]
-        //[AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allBooks = await _service.GetAllAsync(n => n.Store);
@@ -33,7 +32,6 @@ namespace Books.Controllers
 
 
         [Authorize]
-        //[AllowAnonymous]
         public async Task<IActionResult> Filter(string searchString)
         {
             var allBooks = await _service.GetAllAsync(n => n.Store);
@@ -63,39 +61,73 @@ namespace Books.Controllers
         
         public async Task<IActionResult> Create()
         {
-            var bookDropdownsData = await _service.GetNewBookDropdownsValues();
+            
+                var bookDropdownsData = await _service.GetNewBookDropdownsValues();
 
-            if (bookDropdownsData == null)
-            {
-                ModelState.AddModelError("", "There was a problem getting the data for the dropdown lists.");
+                if (bookDropdownsData == null)
+                {
+                    ModelState.AddModelError("", "There was a problem getting the data for the dropdown lists.");
+                    return View();
+                }
+
+                ViewBag.Stores = new SelectList(bookDropdownsData.Stores, "Id", "Name");
+                ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");
+                ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName");
+
                 return View();
-            }
-
-            ViewBag.Stores = new SelectList(bookDropdownsData.Stores, "Id", "Name");
-            ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");
-            ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName");
-
-            return View();
+           
         }
 
 
+        //[HttpPost]
+        //public async Task<IActionResult> Create(NewBookVM book)
+        //{
+        //    try
+        //    {
+
+        //        if (!ModelState.IsValid)
+        //        {
+        //            var bookDropdownsData = await _service.GetNewBookDropdownsValues();
+
+        //            ViewBag.Stores = new SelectList(bookDropdownsData.Stores, "Id", "Name");
+        //            ViewBag.Publishers = new SelectList(bookDropdownsData.Stores, "Id", "FullName");
+        //            ViewBag.Authors = new SelectList(bookDropdownsData.Stores, "Id", "FullName");
+
+        //            return View(book);
+        //        }
+
+        //        await _service.AddNewBookAsync(book);
+        //        return RedirectToAction(nameof(Index));
+        //    }catch (Exception)
+        //    {
+        //        return View("Input all fields");
+        //    }
+        //}
         [HttpPost]
         public async Task<IActionResult> Create(NewBookVM book)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                var bookDropdownsData = await _service.GetNewBookDropdownsValues();
+                if (!ModelState.IsValid)
+                {
+                    var bookDropdownsData = await _service.GetNewBookDropdownsValues();
 
-                ViewBag.Stores = new SelectList(bookDropdownsData.Stores, "Id", "Name");
-                ViewBag.Publishers = new SelectList(bookDropdownsData.Stores, "Id", "FullName");
-                ViewBag.Authors = new SelectList(bookDropdownsData.Stores, "Id", "FullName");
+                    ViewBag.Stores = new SelectList(bookDropdownsData.Stores, "Id", "Name");
+                    ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName"); // Corrected source
+                    ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName"); // Corrected source
 
-                return View(book);
+                    return View(book);
+                }
+
+                await _service.AddNewBookAsync(book);
+                return RedirectToAction(nameof(Index));
             }
-
-            await _service.AddNewBookAsync(book);
-            return RedirectToAction(nameof(Index));
+            catch (Exception)
+            {
+                return View("Input all fields");
+            }
         }
+
         public IActionResult Publishers()
         {
             var publishers = new List<SelectListItem>

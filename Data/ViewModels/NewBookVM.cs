@@ -20,7 +20,7 @@ namespace Books.Data.ViewModels
         [Required(ErrorMessage = "ISBN is required")]
         public string ISBN { get; set; }
 
-        [Display(Name = "Price in $")]
+        [Display(Name = "Price in #")]
         [Required(ErrorMessage = "Price is required")]
         public double Price { get; set; }
 
