@@ -17,7 +17,7 @@ namespace Books.Data
 
                 context.Database.EnsureCreated();
 
-                //Cinema
+                //Store
                 if (!context.Stores.Any())
                 {
                     context.Stores.AddRange(new List<Store>()
@@ -55,7 +55,7 @@ namespace Books.Data
                     });
                     context.SaveChanges();
                 }
-                //Actors
+                //Authors
                 if (!context.Authors.Any())
                 {
                     context.Authors.AddRange(new List<Author>()

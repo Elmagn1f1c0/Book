@@ -4,8 +4,6 @@ using Books.Data.ViewModels;
 using Books.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Data.Entity;
 
 namespace Books.Controllers
 {
@@ -23,9 +21,9 @@ namespace Books.Controllers
         }
 
 
-        public async Task<IActionResult> Users()
+        public IActionResult Users()
         {
-            var users = await _context.Users.ToListAsync();
+            var users = _context.Users.ToList();
             return View(users);
         }
 

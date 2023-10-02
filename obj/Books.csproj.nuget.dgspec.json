@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\source\\repos\\Books\\Books.csproj": {}
+    "C:\\Users\\hp\\Desktop\\Book\\Books.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\source\\repos\\Books\\Books.csproj": {
+    "C:\\Users\\hp\\Desktop\\Book\\Books.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\source\\repos\\Books\\Books.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Desktop\\Book\\Books.csproj",
         "projectName": "Books",
-        "projectPath": "C:\\Users\\hp\\source\\repos\\Books\\Books.csproj",
+        "projectPath": "C:\\Users\\hp\\Desktop\\Book\\Books.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\source\\repos\\Books\\obj\\",
+        "outputPath": "C:\\Users\\hp\\Desktop\\Book\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -45,10 +45,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNet.Identity.EntityFramework": {
-              "target": "Package",
-              "version": "[2.2.3, )"
-            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -97,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
