@@ -15,6 +15,7 @@ namespace Books.Data.ViewModels
 
         [Required]
         [DataType(DataType.Password)]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", ErrorMessage = "Password must have at least one uppercase letter, one lowercase letter, one digit, one special character, and a minimum length of 8 characters.")]
         public string Password { get; set; }
 
         [Display(Name = "Confirm password")]

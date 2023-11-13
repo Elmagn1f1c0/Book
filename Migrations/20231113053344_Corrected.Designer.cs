@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Books.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230507162655_FullUpdate")]
-    partial class FullUpdate
+    [Migration("20231113053344_Corrected")]
+    partial class Corrected
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

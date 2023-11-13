@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Books.Migrations
 {
-    public partial class FullUpdate : Migration
+    public partial class Corrected : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

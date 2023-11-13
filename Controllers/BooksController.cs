@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Books.Controllers
 {
-    [Authorize/*(Roles = UserRoles.Admin)*/]
+    
     public class BooksController : Controller
     {
         private readonly IBooksService _service;
@@ -22,7 +22,7 @@ namespace Books.Controllers
             _service = service;
         }
 
-        [Authorize]
+        
         public async Task<IActionResult> Index()
         {
             var allBooks = await _service.GetAllAsync(n => n.Store);
@@ -31,7 +31,7 @@ namespace Books.Controllers
 
 
 
-        [Authorize]
+        
         public async Task<IActionResult> Filter(string searchString)
         {
             var allBooks = await _service.GetAllAsync(n => n.Store);
@@ -58,7 +58,7 @@ namespace Books.Controllers
             return View(bookDetail);
         }
 
-        
+        [Authorize]
         public async Task<IActionResult> Create()
         {
             
@@ -78,31 +78,7 @@ namespace Books.Controllers
            
         }
 
-
-        //[HttpPost]
-        //public async Task<IActionResult> Create(NewBookVM book)
-        //{
-        //    try
-        //    {
-
-        //        if (!ModelState.IsValid)
-        //        {
-        //            var bookDropdownsData = await _service.GetNewBookDropdownsValues();
-
-        //            ViewBag.Stores = new SelectList(bookDropdownsData.Stores, "Id", "Name");
-        //            ViewBag.Publishers = new SelectList(bookDropdownsData.Stores, "Id", "FullName");
-        //            ViewBag.Authors = new SelectList(bookDropdownsData.Stores, "Id", "FullName");
-
-        //            return View(book);
-        //        }
-
-        //        await _service.AddNewBookAsync(book);
-        //        return RedirectToAction(nameof(Index));
-        //    }catch (Exception)
-        //    {
-        //        return View("Input all fields");
-        //    }
-        //}
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(NewBookVM book)
         {
@@ -113,8 +89,8 @@ namespace Books.Controllers
                     var bookDropdownsData = await _service.GetNewBookDropdownsValues();
 
                     ViewBag.Stores = new SelectList(bookDropdownsData.Stores, "Id", "Name");
-                    ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName"); // Corrected source
-                    ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName"); // Corrected source
+                    ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");
+                    ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName"); 
 
                     return View(book);
                 }
@@ -128,6 +104,7 @@ namespace Books.Controllers
             }
         }
 
+        [Authorize]
         public IActionResult Publishers()
         {
             var publishers = new List<SelectListItem>
@@ -145,6 +122,7 @@ namespace Books.Controllers
 
 
         //GET: Books/Edit/1
+        [Authorize]
         public async Task<IActionResult> Edit(int id)
         {
             var bookDetails = await _service.GetBookByIdAsync(id);
@@ -174,6 +152,7 @@ namespace Books.Controllers
             return View(response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, NewBookVM book)
         {

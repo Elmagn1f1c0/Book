@@ -7,12 +7,17 @@
     <link rel="stylesheet" href="~/css/Design.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" integrity="sha384-dwKg46hMlF5o1nU9IoLZLO7ouP75vR3dtzX1rFtrh7LbJMqud6z9R9MbZQQF5d2a" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-ygbVcJHOG/cfQl16jb6pWUzOf5v0GK9BBOI8Iz3RiPFAxKm4U8BjQ2MO55r5IMZ7" crossorigin="anonymous"></script>
+
+    
 
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
+
                 <a class="navbar-brand" asp-controller="Books" asp-action="Index">Books</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -41,11 +46,14 @@
 
                     </ul>
                     </div>
-
-                    <form class="form-inline my-2 my-lg-0" asp-controller="Books" asp-action="Filter" style="padding-right: 25px;">
+                <form class="form-inline my-2 my-lg-0" asp-controller="Books" asp-action="Filter" style="padding-right: 25px;">
+                    <div class="input-group">
                         <input name="searchString" type="text" class="form-control" placeholder="Search for a book..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
-                    </form>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+                </form>
 
                     <ul class="navbar-nav">
                         @await Component.InvokeAsync("ShoppingCartSummary")
@@ -96,19 +104,12 @@
                 
                 element.style.display = "none";
             }
-                
-            
-            
-        //if(element.style == "block"){
-           
-        //} 
-        
         
         })
     </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbVcJHOG/cfQl16jb6pWUzOf5v0GK9BBOI8Iz3RiPFAxKm4U8BjQ2MO55r5IMZ7" crossorigin="anonymous"></script>
+     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script> 
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)

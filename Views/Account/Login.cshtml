@@ -5,10 +5,41 @@
     ViewData["Title"] = "Log in to your account";
 }
 
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    #hero-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .full-width-button {
+        width: 100%;
+    }
+
+    .form-group {
+        margin-bottom: 15px; 
+    }
+
+   
+    input[type="text"],
+    input[type="password"] {
+        height: 60px;
+        width: 100%;
+    }
+
+    .btn-outline-success.full-width-button {
+        height: 60px;
+        width: 100%;
+    }
+</style>
+
 <div class="row shadow">
-    <div class="col-md-6 offset-3">
+    <div class="col-md-6">
         <p>
-            <h4>Log in to your account</h4>
+            <h4 class="text-center">SIGN IN</h4>
         </p>
 
         @if (TempData["Error"] != null)
@@ -25,21 +56,27 @@
 
                     <div class="form-group">
                         <label asp-for="EmailAddress" class="control-label"></label>
-                        <input asp-for="EmailAddress" class="form-control" />
+                        <input asp-for="EmailAddress" class="form-control" placeholder="Enter your email address" />
                         <span asp-validation-for="EmailAddress" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" />
+                        <input asp-for="Password" class="form-control" placeholder="Enter your password" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <input class="btn btn-outline-success float-right" type="submit" value="Log in" />
-                        <a class="btn btn-outline-secondary" asp-controller="Books" asp-action="Index">Cancel</a>
+                        <input class="btn btn-outline-success full-width-button" type="submit" value="SIGN IN" />
                     </div>
+                    <div class="signup-link">
+                        Don't have an account? <a asp-controller="Account" asp-action="Register">Sign Up</a>
+                    </div>
+
                 </form>
             </div>
         </div>
+    </div>
+    <div class="col-md-6">
+        <img src="~/images/loginhero.png" alt="Image" class="w-100" id="hero-img" />
     </div>
 </div>
