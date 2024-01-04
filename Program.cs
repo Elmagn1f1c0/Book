@@ -16,7 +16,7 @@ builder.Services.AddScoped<IPublishersService, PublishersService>();
 builder.Services.AddScoped<IStoresService, StoresService>();
 builder.Services.AddScoped<IBooksService, BooksService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
-
+builder.Services.AddScoped<ImageService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 

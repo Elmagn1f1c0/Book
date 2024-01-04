@@ -36,6 +36,7 @@
                                 @Model.Publisher.FullName
                             </a>
                         </p>
+                        </p>
                         <p class="card-text"><b>Category: </b>@Model.BookCategory</p>
                         <p class="card-text"><b>ISBN: </b>@Model.ISBN</p>
                         <p class="card-text"><b>Year Published: </b>@Model.YearPublished.ToString("dd MMM yy")</p>
@@ -56,7 +57,7 @@
                             }
                         </p>
                         <p class="card-text">
-                            <b>Authors: </b>
+                            <b>Authors:</b>
                             <hr />
                             <div class="row">
                                 @foreach (var author in Model.Authors_Books)

@@ -24,8 +24,8 @@ namespace Books.Data.ViewModels
         [Required(ErrorMessage = "Price is required")]
         public double Price { get; set; }
 
-        [Display(Name = "Book poster URL")]
-        [Required(ErrorMessage = "Book poster URL is required")]
+        //[Display(Name = "Book poster URL")]
+        //[Required(ErrorMessage = "Book poster URL is required")]
         public string ImageURL { get; set; }
 
         [Display(Name = "Book year published")]
@@ -39,6 +39,8 @@ namespace Books.Data.ViewModels
         [Display(Name = "Select a category")]
         [Required(ErrorMessage = "Book category is required")]
         public BookCategory BookCategory { get; set; }
+        [Display(Name = "Book poster")]
+        public IFormFile BookPosterFile { get; set; }
 
         //Relationships
         [Display(Name = "Select author(s)")]

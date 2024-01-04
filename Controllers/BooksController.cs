@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 
 namespace Books.Controllers
 {
@@ -15,11 +16,14 @@ namespace Books.Controllers
     {
         private readonly IBooksService _service;
         public int PageSize = 4;
+        private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly ImageService _imageService;
 
-
-        public BooksController(IBooksService service)
+        public BooksController(IBooksService service, IWebHostEnvironment hostEnvironment, ImageService imageService)
         {
             _service = service;
+            _hostEnvironment = hostEnvironment;
+            _imageService = imageService;
         }
 
         
@@ -80,28 +84,40 @@ namespace Books.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Create(NewBookVM book)
+        public async Task<IActionResult> Create(NewBookVM bookVM, IFormFile? bookPosterFile)
         {
-            try
+
+            if (!ModelState.IsValid)
             {
-                if (!ModelState.IsValid)
+                var bookDropdownsData = await _service.GetNewBookDropdownsValues();
+
+                ViewBag.Stores = new SelectList(bookDropdownsData.Stores, "Id", "Name");
+                ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");
+                ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName");
+
+                return View(bookVM);
+            }
+
+            if (bookPosterFile != null && bookPosterFile.Length > 0)
+            {
+                if (!IsValidFileExtension(bookPosterFile))
                 {
+                    ModelState.AddModelError("BookPosterFile", "Invalid file type. Please upload an image file.");
                     var bookDropdownsData = await _service.GetNewBookDropdownsValues();
 
                     ViewBag.Stores = new SelectList(bookDropdownsData.Stores, "Id", "Name");
                     ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");
-                    ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName"); 
+                    ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName");
 
-                    return View(book);
+                    return View(bookVM);
                 }
 
-                await _service.AddNewBookAsync(book);
-                return RedirectToAction(nameof(Index));
+                bookVM.ImageURL = await _imageService.UploadImageAsync(bookPosterFile, "images");
             }
-            catch (Exception)
-            {
-                return View("Input all fields");
-            }
+
+            await _service.AddNewBookAsync(bookVM);
+            return RedirectToAction(nameof(Index));
+
         }
 
         [Authorize]
@@ -151,12 +167,11 @@ namespace Books.Controllers
 
             return View(response);
         }
-
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, NewBookVM book)
+        public async Task<IActionResult> Edit(int id, NewBookVM bookVM, IFormFile? bookPosterFile)
         {
-            if (id != book.Id) return View("NotFound");
+            if (id != bookVM.Id) return View("NotFound");
 
             if (!ModelState.IsValid)
             {
@@ -166,14 +181,39 @@ namespace Books.Controllers
                 ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");
                 ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName");
 
-                return View(book);
+                return View(bookVM);
             }
 
-            await _service.UpdateBookAsync(book);
+            if (bookPosterFile != null && bookPosterFile.Length > 0)
+            {
+                if (!IsValidFileExtension(bookPosterFile)) // Validation for file type if needed
+                {
+                    ModelState.AddModelError("BookPosterFile", "Invalid file type. Please upload an image file.");
+                    var bookDropdownsData = await _service.GetNewBookDropdownsValues();
+
+                    ViewBag.Stores = new SelectList(bookDropdownsData.Stores, "Id", "Name");
+                    ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");
+                    ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName");
+
+                    return View(bookVM);
+                }
+
+                bookVM.ImageURL = await _imageService.UploadImageAsync(bookPosterFile, "images");
+            }
+
+            await _service.UpdateBookAsync(bookVM);
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize/*(Roles = "Admin")*/]
+        private bool IsValidFileExtension(IFormFile file)
+        {
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+            var fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
+            return allowedExtensions.Contains(fileExtension);
+        }
+
+
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var book = await _service.GetByIdAsync(id);
