@@ -84,7 +84,7 @@ namespace Books.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Create(NewBookVM bookVM, IFormFile? bookPosterFile)
+        public async Task<IActionResult> Create(NewBookVM bookVM, IFormFile bookPosterFile)
         {
 
             if (!ModelState.IsValid)
@@ -138,7 +138,8 @@ namespace Books.Controllers
 
 
         //GET: Books/Edit/1
-        [Authorize]
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var bookDetails = await _service.GetBookByIdAsync(id);
@@ -169,7 +170,7 @@ namespace Books.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, NewBookVM bookVM, IFormFile? bookPosterFile)
+        public async Task<IActionResult> Edit(int id, NewBookVM bookVM, IFormFile bookPosterFile)
         {
             if (id != bookVM.Id) return View("NotFound");
 
@@ -186,7 +187,7 @@ namespace Books.Controllers
 
             if (bookPosterFile != null && bookPosterFile.Length > 0)
             {
-                if (!IsValidFileExtension(bookPosterFile)) // Validation for file type if needed
+                if (!IsValidFileExtension(bookPosterFile)) 
                 {
                     ModelState.AddModelError("BookPosterFile", "Invalid file type. Please upload an image file.");
                     var bookDropdownsData = await _service.GetNewBookDropdownsValues();
@@ -260,6 +261,7 @@ namespace Books.Controllers
                 return View("Error");
             }
         }
+
 
     }
 }

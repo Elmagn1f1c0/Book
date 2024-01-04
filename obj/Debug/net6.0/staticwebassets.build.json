@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "w+XadmsLep6gELnNE9taUkbHHRlnIVhhp272pvtpF8Q=",
+  "Hash": "X5gtM5in3Vthky882P5XoFwXw4tPxP6YFZnO29Pqqxs=",
   "Source": "Books",
   "BasePath": "_content/Books",
   "Mode": "Default",
@@ -850,12 +850,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\images\\32f64303-9c02-4a2f-be27-b5483b7b2ab6_Screenshot_2019-05-08-17-02-33-1269269.jpg",
+      "Identity": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\images\\b7fb8b29-63ef-4b85-b213-73c83eaa1426_Screenshot_2019-05-08-17-02-33-1269269.jpg",
       "SourceId": "Books",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\",
       "BasePath": "_content/Books",
-      "RelativePath": "images/32f64303-9c02-4a2f-be27-b5483b7b2ab6_Screenshot_2019-05-08-17-02-33-1269269.jpg",
+      "RelativePath": "images/b7fb8b29-63ef-4b85-b213-73c83eaa1426_Screenshot_2019-05-08-17-02-33-1269269.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -864,24 +864,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\32f64303-9c02-4a2f-be27-b5483b7b2ab6_Screenshot_2019-05-08-17-02-33-1269269.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\images\\4a7833a7-8831-4872-b4a4-737781a8aecc_Screenshot_2019-05-08-17-02-33-1269269.jpg",
-      "SourceId": "Books",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\",
-      "BasePath": "_content/Books",
-      "RelativePath": "images/4a7833a7-8831-4872-b4a4-737781a8aecc_Screenshot_2019-05-08-17-02-33-1269269.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\4a7833a7-8831-4872-b4a4-737781a8aecc_Screenshot_2019-05-08-17-02-33-1269269.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\b7fb8b29-63ef-4b85-b213-73c83eaa1426_Screenshot_2019-05-08-17-02-33-1269269.jpg"
     },
     {
       "Identity": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\images\\loginhero.png",

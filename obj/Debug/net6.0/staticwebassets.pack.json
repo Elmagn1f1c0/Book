@@ -193,16 +193,12 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\images\\32f64303-9c02-4a2f-be27-b5483b7b2ab6_Screenshot_2019-05-08-17-02-33-1269269.jpg",
-      "PackagePath": "staticwebassets\\images\\32f64303-9c02-4a2f-be27-b5483b7b2ab6_Screenshot_2019-05-08-17-02-33-1269269.jpg"
-    },
-    {
-      "Id": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\images\\4a7833a7-8831-4872-b4a4-737781a8aecc_Screenshot_2019-05-08-17-02-33-1269269.jpg",
-      "PackagePath": "staticwebassets\\images\\4a7833a7-8831-4872-b4a4-737781a8aecc_Screenshot_2019-05-08-17-02-33-1269269.jpg"
-    },
-    {
       "Id": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\images\\Reg.png",
       "PackagePath": "staticwebassets\\images\\Reg.png"
+    },
+    {
+      "Id": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\images\\b7fb8b29-63ef-4b85-b213-73c83eaa1426_Screenshot_2019-05-08-17-02-33-1269269.jpg",
+      "PackagePath": "staticwebassets\\images\\b7fb8b29-63ef-4b85-b213-73c83eaa1426_Screenshot_2019-05-08-17-02-33-1269269.jpg"
     },
     {
       "Id": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\images\\loginhero.png",

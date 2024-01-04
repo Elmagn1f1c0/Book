@@ -5,28 +5,31 @@ namespace Books.Data.Services
 {
     public class ImageService : IImageService
     {
-        private readonly IWebHostEnvironment _hostEnvironment;
-
-        public ImageService(IWebHostEnvironment hostEnvironment)
+        private readonly IConfiguration _configuration;
+        public ImageService(IConfiguration configuration)
         {
-            _hostEnvironment = hostEnvironment;
+            _configuration = configuration;
         }
 
-        public async Task<string?> UploadImageAsync(IFormFile file, string folderPath)
+        public async Task<string> UploadImageAsync(IFormFile file, string folderPath)
         {
             if (file == null || file.Length == 0)
                 return null;
-
-            var uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, folderPath);
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            var cloudinaryAccount = new Account(
+                    _configuration["Cloudinary:CloudName"],
+                    _configuration["Cloudinary:ApiKey"],
+                    _configuration["Cloudinary:ApiSecret"]
+                );
+            var cloudinary = new Cloudinary(cloudinaryAccount);
+            var uploadParams = new ImageUploadParams
             {
-                await file.CopyToAsync(stream);
-            }
+                File = new FileDescription(file.FileName, file.OpenReadStream()),
+                Folder = folderPath 
+            };
 
-            return Path.Combine(folderPath, uniqueFileName);
+            var uploadResult = await cloudinary.UploadAsync(uploadParams);
+
+            return uploadResult.SecureUrl.AbsoluteUri;
         }
     }
 }
