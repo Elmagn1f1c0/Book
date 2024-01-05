@@ -1,29 +1,29 @@
-﻿using Books.Data.Services;
-using Books.Data.Static;
+﻿using Books.Data;
+using Books.Data.Services;
 using Books.Data.ViewModels;
-using Books.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
 
 namespace Books.Controllers
 {
-    
+
     public class BooksController : Controller
     {
         private readonly IBooksService _service;
         public int PageSize = 4;
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly ImageService _imageService;
+        private readonly AppDbContext _dbContext;
 
-        public BooksController(IBooksService service, IWebHostEnvironment hostEnvironment, ImageService imageService)
+        public BooksController(IBooksService service, IWebHostEnvironment hostEnvironment, ImageService imageService,AppDbContext dbContext)
         {
             _service = service;
             _hostEnvironment = hostEnvironment;
             _imageService = imageService;
+            _dbContext = dbContext;
         }
 
         
@@ -168,6 +168,7 @@ namespace Books.Controllers
 
             return View(response);
         }
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, NewBookVM bookVM, IFormFile bookPosterFile)
@@ -222,7 +223,6 @@ namespace Books.Controllers
             return View(book);
         }
 
-        
 
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
@@ -249,15 +249,13 @@ namespace Books.Controllers
                     }
                     else
                     {
-                        Console.WriteLine("An error occurred while executing the DELETE statement: "/* + sqlException.Message*/);
+                        Console.WriteLine("An error occurred while executing the DELETE statement: ");
                     }
                 }
                 else
                 {
-                    // Handle other DbUpdateException scenarios
                     Console.WriteLine("An error occurred while updating the database: " + ex.Message);
                 }
-                // Optionally, you can return an error view or redirect to an error page.
                 return View("Error");
             }
         }

@@ -29,6 +29,7 @@ namespace Books.Data.Services
 
             var uploadResult = await cloudinary.UploadAsync(uploadParams);
 
+  
             return uploadResult.SecureUrl.AbsoluteUri;
         }
     }

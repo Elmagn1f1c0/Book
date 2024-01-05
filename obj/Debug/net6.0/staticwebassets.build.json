@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "X5gtM5in3Vthky882P5XoFwXw4tPxP6YFZnO29Pqqxs=",
+  "Hash": "C7qubK5qUeDnZSZ2JNyox+A0cLdAtL3y/E1zyRrT24U=",
   "Source": "Books",
   "BasePath": "_content/Books",
   "Mode": "Default",
@@ -848,23 +848,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\images\\b7fb8b29-63ef-4b85-b213-73c83eaa1426_Screenshot_2019-05-08-17-02-33-1269269.jpg",
-      "SourceId": "Books",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\",
-      "BasePath": "_content/Books",
-      "RelativePath": "images/b7fb8b29-63ef-4b85-b213-73c83eaa1426_Screenshot_2019-05-08-17-02-33-1269269.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\b7fb8b29-63ef-4b85-b213-73c83eaa1426_Screenshot_2019-05-08-17-02-33-1269269.jpg"
     },
     {
       "Identity": "C:\\Users\\hp\\Desktop\\Book - Copy\\wwwroot\\images\\loginhero.png",

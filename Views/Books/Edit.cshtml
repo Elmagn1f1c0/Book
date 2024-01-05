@@ -45,11 +45,15 @@
                                 <label asp-for="Price" class="control-label"></label>
                                 <input asp-for="Price" type="number" class="form-control" />
                                 <span asp-validation-for="Price" class="text-danger"></span>
-                            </div>
+                            
                             <div class="form-group">
                                 <label asp-for="BookPosterFile" class="control-label"></label>
                                 <input type="file" asp-for="BookPosterFile" class="form-control" />
                                 <span asp-validation-for="BookPosterFile" class="text-danger"></span>
+                            </div>
+                            </div>
+                            <div class="col-md-4 offset-4 text-center">
+                                <img width="200%" id="ImageUrlPreview" src="@Model.ImageURL" />
                             </div>
                         </div>
                         <div class="col-md-6">
