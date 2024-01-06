@@ -1,4 +1,5 @@
-﻿@model Store
+﻿@using Books.Data.ViewModels;
+@model StoreVM
 
 @{
     ViewData["Title"] = "Update store";
@@ -11,16 +12,16 @@
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Edit">
+                <form asp-action="Edit" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="form-group text-center">
-                        <img id="StoreLogoPreview" class="border-info rounded-circle" style="max-width: 150px" />
+                        <img id="BookPosterPreview" style="max-width: 150px" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="Logo" class="control-label"></label>
-                        <input asp-for="Logo" class="form-control" />
-                        <span asp-validation-for="Logo" class="text-danger"></span>
+                        <label asp-for="BookPosterFile" class="control-label"></label>
+                        <input type="file" id="BookPosterFile" name="BookPosterFile" class="form-control" />
+                        <span asp-validation-for="BookPosterFile" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Name" class="control-label"></label>
@@ -46,12 +47,18 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
-            var output = document.getElementById('CinemaLogoPreview');
-            output.src = $("#Logo").val();
-        })
-        $("#Logo").on("change", function () {
-            var output = document.getElementById('CinemaLogoPreview');
-            output.src = $(this).val();
-        })
+            $("#BookPosterFile").on("change", function () {
+                var input = this;
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#BookPosterPreview').attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            });
+        });
     </script>
 }
