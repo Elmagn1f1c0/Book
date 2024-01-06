@@ -76,17 +76,39 @@ namespace Books.Controllers
             {
                 var authorDetails = await _service.GetByIdAsync(id);
                 if (authorDetails == null) return View("NotFound");
-                return View(authorDetails);
-            }
+            var authorVM = new AuthorVM
+            {
+                Id = authorDetails.Id,
+                FullName = authorDetails.FullName,
+                Bio = authorDetails.Bio,
+                ProfilePictureURL = authorDetails.ProfilePictureURL
+            };
+
+            return View(authorVM);
+        }
 
             [HttpPost]
-            public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfilePictureURL,Bio")] Author author)
+            public async Task<IActionResult> Edit(int id, AuthorVM authorVM)
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(author);
+                    return View(authorVM);
                 }
-                await _service.UpdateAsync(id, author);
+            if (authorVM.BookPosterFile != null && authorVM.BookPosterFile.Length > 0)
+            {
+                string folderPath = "publisher_images";
+                var imageService = new ImageService(_configuration);
+                authorVM.ProfilePictureURL = await imageService.UploadImageAsync(authorVM.BookPosterFile, folderPath);
+            }
+
+            Author updatedAuthor = new Author
+            {
+                Id = authorVM.Id,
+                FullName = authorVM.FullName,
+                Bio = authorVM.Bio,
+                ProfilePictureURL = authorVM.ProfilePictureURL
+            };
+            await _service.UpdateAsync(id, updatedAuthor);
                 return RedirectToAction(nameof(Index));
             }
 
