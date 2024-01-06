@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Books.Data.ViewModels
 {
-    public class PublisherVM
+    public class AuthorVM
     {
         [Key]
         public int Id { get; set; }
-        public string ProfilePictureURL { get; set; }
         [Required(ErrorMessage = "Book Poster is required")]
         public IFormFile BookPosterFile { get; set; }
+        public string ProfilePictureURL { get; set; }
 
         [Display(Name = "Full Name")]
         [Required(ErrorMessage = "Full Name is required")]
@@ -21,6 +21,6 @@ namespace Books.Data.ViewModels
         public string Bio { get; set; }
 
         //Relationships
-        public List<Book> Books { get; set; }
+        public List<Author_Book> Authors_Books { get; set; }
     }
 }
