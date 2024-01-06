@@ -19,7 +19,6 @@ namespace Books.Models
         public DateTime YearPublished { get; set; }
         public DateTime EndDate { get; set; }
         public BookCategory BookCategory { get; set; }
-        //public double Rating { get; set; }
 
 
         //Relationships

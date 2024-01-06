@@ -1,9 +1,7 @@
 ﻿using Books.Data.Enums;
 using Books.Data.Static;
 using Books.Models;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Books.Data
 {
