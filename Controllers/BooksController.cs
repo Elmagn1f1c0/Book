@@ -16,14 +16,12 @@ namespace Books.Controllers
         public int PageSize = 4;
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly ImageService _imageService;
-       // private readonly AppDbContext _dbContext;
 
-        public BooksController(IBooksService service, IWebHostEnvironment hostEnvironment, ImageService imageService/*,AppDbContext dbContext*/)
+        public BooksController(IBooksService service, IWebHostEnvironment hostEnvironment, ImageService imageService)
         {
             _service = service;
             _hostEnvironment = hostEnvironment;
             _imageService = imageService;
-           // _dbContext = dbContext;
         }
 
         

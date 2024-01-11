@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Desktop\\Book - Copy\\Books.csproj": {}
+    "C:\\Users\\hp\\Desktop\\Book\\Books.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Desktop\\Book - Copy\\Books.csproj": {
+    "C:\\Users\\hp\\Desktop\\Book\\Books.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Desktop\\Book - Copy\\Books.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Desktop\\Book\\Books.csproj",
         "projectName": "Books",
-        "projectPath": "C:\\Users\\hp\\Desktop\\Book - Copy\\Books.csproj",
+        "projectPath": "C:\\Users\\hp\\Desktop\\Book\\Books.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Desktop\\Book - Copy\\obj\\",
+        "outputPath": "C:\\Users\\hp\\Desktop\\Book\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

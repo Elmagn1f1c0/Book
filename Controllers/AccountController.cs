@@ -74,7 +74,6 @@ namespace Books.Controllers
             {
                 FullName = registerVM.FullName,
                 Email = registerVM.EmailAddress,
-                UserName = registerVM.EmailAddress
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 

@@ -23,31 +23,31 @@ namespace Books.Data
                         new Store()
                         {
                             Name = "Store 1",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-1.jpeg",
+                            Logo = "https://dotnethow.net/images/cinemas/cinema-1.jpeg",
                             Description = "This is the description of the first store"
                         },
                         new Store()
                         {
                             Name = "Store 2",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-2.jpeg",
+                            Logo = "https://dotnethow.net/images/cinemas/cinema-2.jpeg",
                             Description = "This is the description of the second store"
                         },
                         new Store()
                         {
                             Name = "Store 3",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-3.jpeg",
+                            Logo = "https://dotnethow.net/images/cinemas/cinema-3.jpeg",
                             Description = "This is the description of the Third store"
                         },
                         new Store()
                         {
                             Name = "Store 4",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-4.jpeg",
+                            Logo = "https://dotnethow.net/images/cinemas/cinema-4.jpeg",
                             Description = "This is the description of the fourth store"
                         },
                         new Store()
                         {
                             Name = "Store 5",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-5.jpeg",
+                            Logo = "https://dotnethow.net/images/cinemas/cinema-5.jpeg",
                             Description = "This is the description of the fifth store"
                         },
                     });
@@ -62,32 +62,32 @@ namespace Books.Data
                         {
                             FullName = "Author 1",
                             Bio = "This is the Bio of the first Author",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-1.jpeg"
+                            ProfilePictureURL = "https://dotnethow.net/images/actors/actor-1.jpeg"
 
                         },
                         new Author()
                         {
                             FullName = "Author 2",
                             Bio = "This is the Bio of the second Author",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-2.jpeg"
+                            ProfilePictureURL = "https://dotnethow.net/images/actors/actor-2.jpeg"
                         },
                         new Author()
                         {
                             FullName = "Author 3",
                             Bio = "This is the Bio of the third Author",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-3.jpeg"
+                            ProfilePictureURL = "https://dotnethow.net/images/actors/actor-3.jpeg"
                         },
                         new Author()
                         {
                             FullName = "Author 4",
                             Bio = "This is the Bio of the fourth Author",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-4.jpeg"
+                            ProfilePictureURL = "https://dotnethow.net/images/actors/actor-4.jpeg"
                         },
                         new Author()
                         {
                             FullName = "Author 5",
                             Bio = "This is the Bio of the fifth Author",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-5.jpeg"
+                            ProfilePictureURL = "https://dotnethow.net/images/actors/actor-5.jpeg"
                         }
                     });
                     context.SaveChanges();
@@ -101,32 +101,32 @@ namespace Books.Data
                         {
                             FullName = "Publisher 1",
                             Bio = "This is the Bio of the first Publisher",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-1.jpeg"
+                            ProfilePictureURL = "https://dotnethow.net/images/producers/producer-1.jpeg"
 
                         },
                         new Publisher()
                         {
                             FullName = "Publisher 2",
                             Bio = "This is the Bio of the second Publisher",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-2.jpeg"
+                            ProfilePictureURL = "https://dotnethow.net/images/producers/producer-2.jpeg"
                         },
                         new Publisher()
                         {
                             FullName = "Publisher 3",
                             Bio = "This is the Bio of the third Publisher",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-3.jpeg"
+                            ProfilePictureURL = "https://dotnethow.net/images/producers/producer-3.jpeg"
                         },
                         new Publisher()
                         {
                             FullName = "Publisher 4",
                             Bio = "This is the Bio of the fourth Publisher",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-4.jpeg"
+                            ProfilePictureURL = "https://dotnethow.net/images/producers/producer-4.jpeg"
                         },
                         new Publisher()
                         {
                             FullName = "Publisher 5",
                             Bio = "This is the Bio of the fifth Publisher",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-5.jpeg"
+                            ProfilePictureURL = "https://dotnethow.net/images/producers/producer-5.jpeg"
                         }
                     });
                     context.SaveChanges();
