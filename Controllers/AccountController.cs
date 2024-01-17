@@ -74,14 +74,26 @@ namespace Books.Controllers
             {
                 FullName = registerVM.FullName,
                 Email = registerVM.EmailAddress,
+                UserName = registerVM.EmailAddress,
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
             if (newUserResponse.Succeeded)
+            {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+                await _context.SaveChangesAsync();
+                return View("RegisterCompleted");
+            }
+            foreach (var error in newUserResponse.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
 
-            return View("RegisterCompleted");
-        }
+            return View(registerVM);
+        
+
+
+    }
 
         [HttpPost]
         public async Task<IActionResult> Logout()
