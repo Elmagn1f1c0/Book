@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <p class="card-text">@Model.Description</p>
+                        <p class="card-text">@Html.Raw(Model.Description)</p>
                         <p class="card-text">
                             <b>Store: </b>
                             <a asp-controller="Stores" asp-action="Details" asp-route-id="@Model.StoreId">
